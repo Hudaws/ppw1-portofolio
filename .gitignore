@@ -1,0 +1,13 @@
+# File konfigurasi sensitif
+**/koneksi.php
+**/config.php
+**/.env
+**/database.php
+
+# Folder dependency
+node_modules/
+vendor/
+
+# File sistem
+.DS_Store
+Thumbs.db
