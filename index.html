@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PPW1 Portofolio - Misbahul Huda</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f1;
+      --panel: #ffffff;
+      --ink: #1e2a32;
+      --muted: #66737d;
+      --line: #d8ded4;
+      --accent: #0f766e;
+      --accent-strong: #0b5f59;
+      --warm: #b45309;
+      --shadow: 0 12px 28px rgba(30, 42, 50, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .repo-link {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--accent-strong);
+      font-weight: 700;
+      padding: 9px 12px;
+      white-space: nowrap;
+    }
+
+    main {
+      padding: 28px 0 44px;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .intro p {
+      max-width: 720px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(88px, 1fr));
+      gap: 10px;
+      min-width: 300px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(30, 42, 50, 0.05);
+    }
+
+    .stat b {
+      display: block;
+      font-size: 1.35rem;
+      line-height: 1;
+      color: var(--accent-strong);
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: top center;
+      border-bottom: 1px solid var(--line);
+      background: #eef0ea;
+    }
+
+    .card-body {
+      display: flex;
+      min-height: 176px;
+      flex: 1;
+      flex-direction: column;
+      padding: 14px;
+    }
+
+    .eyebrow {
+      color: var(--warm);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 4px 0 8px;
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 14px;
+    }
+
+    .actions a {
+      display: inline-flex;
+      min-height: 38px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--accent-strong);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .actions a.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .actions a.disabled {
+      color: #98a19b;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 22px 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 980px) {
+      .intro {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        min-width: 0;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .repo-link {
+        width: 100%;
+        text-align: center;
+      }
+
+      .stats,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell topbar">
+      <div class="brand">
+        <strong>PPW1 Portofolio</strong>
+        <span>Misbahul Huda - 25/568209/SV/27391 - PL2B2</span>
+      </div>
+      <a class="repo-link" href="https://github.com/Hudaws/ppw1-portofolio">Repository GitHub</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Praktikum Pemrograman Web 1</h1>
+        <p>Kumpulan laporan dan modul praktikum dari Bab 1 sampai Bab 14, disusun per bab dengan dokumentasi preview agar mudah diperiksa.</p>
+      </div>
+      <div class="stats" aria-label="Ringkasan portofolio">
+        <div class="stat"><b>14</b><span>Bab</span></div>
+        <div class="stat"><b>27</b><span>PDF</span></div>
+        <div class="stat"><b>14</b><span>Preview</span></div>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Daftar bab praktikum">
+      <article class="card">
+        <img src="screenshots/bab-01.png" alt="Preview Bab 1">
+        <div class="card-body">
+          <span class="eyebrow">Bab 1</span>
+          <h2>Dokumentasi Praktikum</h2>
+          <p>Folder berisi modul praktikum Bab 1.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2001/">Folder</a>
+            <a class="disabled" href="#">Laporan</a>
+            <a href="Bab%2001/Modul%20Praktikum%20Web1%20Bab%201.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-02.png" alt="Preview Bab 2">
+        <div class="card-body">
+          <span class="eyebrow">Bab 2</span>
+          <h2>Dasar HTML</h2>
+          <p>Laporan dan modul praktikum pertemuan 2.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2002/">Folder</a>
+            <a href="Bab%2002/Misbahul%20Huda_568209_PPW_PL2B2_Pertemuan%202.pdf">Laporan</a>
+            <a href="Bab%2002/Modul%20Praktikum%20Web1%20BAB-2.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-03.png" alt="Preview Bab 3">
+        <div class="card-body">
+          <span class="eyebrow">Bab 3</span>
+          <h2>Praktikum Bab 3</h2>
+          <p>Laporan dan modul praktikum pertemuan 3.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2003/">Folder</a>
+            <a href="Bab%2003/Misbahul%20Huda_568209_PPW_PL2B2_Pertemuan%203.pdf">Laporan</a>
+            <a href="Bab%2003/Modul%20Praktikum%20Web1%20BAB-3.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-04.png" alt="Preview Bab 4">
+        <div class="card-body">
+          <span class="eyebrow">Bab 4</span>
+          <h2>Praktikum Bab 4</h2>
+          <p>Laporan dan modul praktikum pertemuan 4.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2004/">Folder</a>
+            <a href="Bab%2004/Misbahul%20Huda_568209_PPW_PL2B2_Pertemuan%204.pdf">Laporan</a>
+            <a href="Bab%2004/Bab%204%20-%20Modul%20Praktikum%20Web%201.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-05.png" alt="Preview Bab 5">
+        <div class="card-body">
+          <span class="eyebrow">Bab 5</span>
+          <h2>Praktikum Bab 5</h2>
+          <p>Laporan dan modul praktikum pertemuan 5.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2005/">Folder</a>
+            <a href="Bab%2005/Misbahul%20Huda_568209_PPW_PL2B2_Pertemuan%205.pdf">Laporan</a>
+            <a href="Bab%2005/Modul%20Praktikum%20Web1%20BAB%205.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-06.png" alt="Preview Bab 6">
+        <div class="card-body">
+          <span class="eyebrow">Bab 6</span>
+          <h2>Praktikum Bab 6</h2>
+          <p>Laporan dan modul praktikum pertemuan 6.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2006/">Folder</a>
+            <a href="Bab%2006/Misbahul%20Huda_568209_PPW_PL2B2_Pertemuan%206.pdf">Laporan</a>
+            <a href="Bab%2006/Modul%20Praktikum_BAB6.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-07.png" alt="Preview Bab 7">
+        <div class="card-body">
+          <span class="eyebrow">Bab 7</span>
+          <h2>Praktikum Bab 7</h2>
+          <p>Laporan dan modul praktikum pertemuan 7.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2007/">Folder</a>
+            <a href="Bab%2007/Laporan%20Praktikum_Pertemuan%207_PPW_Misbahul%20Huda_568209.pdf">Laporan</a>
+            <a href="Bab%2007/Modul%20Praktikum%20_organized_2.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-08.png" alt="Preview Bab 8">
+        <div class="card-body">
+          <span class="eyebrow">Bab 8</span>
+          <h2>Praktikum Bab 8</h2>
+          <p>Laporan dan modul praktikum pertemuan 8.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2008/">Folder</a>
+            <a href="Bab%2008/Laporan%20Praktikum_Pertemuan%208_PPW_Misbahul%20Huda_568209.pdf">Laporan</a>
+            <a href="Bab%2008/Modul%20Praktikum%20Web%201%20Bab%208_2.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-09.png" alt="Preview Bab 9">
+        <div class="card-body">
+          <span class="eyebrow">Bab 9</span>
+          <h2>Praktikum Bab 9</h2>
+          <p>Laporan dan modul praktikum pertemuan 9.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2009/">Folder</a>
+            <a href="Bab%2009/Laporan%20Praktikum_Pertemuan%209_PPW_Misbahul%20Huda_568209.pdf">Laporan</a>
+            <a href="Bab%2009/Modul%20Praktikum%20Web%201%20Bab%209.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-10.png" alt="Preview Bab 10">
+        <div class="card-body">
+          <span class="eyebrow">Bab 10</span>
+          <h2>Praktikum Bab 10</h2>
+          <p>Laporan dan modul praktikum pertemuan 10.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2010/">Folder</a>
+            <a href="Bab%2010/Laporan%20Praktikum_Pertemuan_10_PPW_Misbahul%20Huda_568209.pdf">Laporan</a>
+            <a href="Bab%2010/Modul%20Praktikum%20Web%2010.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-11.png" alt="Preview Bab 11">
+        <div class="card-body">
+          <span class="eyebrow">Bab 11</span>
+          <h2>Praktikum Bab 11</h2>
+          <p>Laporan dan modul praktikum Bab 11.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2011/">Folder</a>
+            <a href="Bab%2011/Laporan%20Praktikum_Pertemuan_10_PPW_Misbahul%20Huda_568209.pdf">Laporan</a>
+            <a href="Bab%2011/Modul%20Praktikum%20Web1%20Bab%2011.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-12.png" alt="Preview Bab 12">
+        <div class="card-body">
+          <span class="eyebrow">Bab 12</span>
+          <h2>Praktikum Bab 12</h2>
+          <p>Laporan dan modul praktikum Bab 12.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2012/">Folder</a>
+            <a href="Bab%2012/Laporan%20Praktikum_Pertemuan_11_PPW_Misbahul%20Huda_568209.pdf">Laporan</a>
+            <a href="Bab%2012/Modul%20Praktikum%20Web1%20Bab%2012.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-13.png" alt="Preview Bab 13">
+        <div class="card-body">
+          <span class="eyebrow">Bab 13</span>
+          <h2>Praktikum Bab 13</h2>
+          <p>Laporan dan modul praktikum Bab 13.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2013/">Folder</a>
+            <a href="Bab%2013/Laporan%20Praktikum_Pertemuan_12_PPW_Misbahul%20Huda_568209.pdf">Laporan</a>
+            <a href="Bab%2013/Modul%20Praktikum%20Web1%20Bab%2013.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="screenshots/bab-14.png" alt="Preview Bab 14">
+        <div class="card-body">
+          <span class="eyebrow">Bab 14</span>
+          <h2>Praktikum Bab 14</h2>
+          <p>Laporan dan modul praktikum Bab 14.</p>
+          <div class="actions">
+            <a class="primary" href="Bab%2014/">Folder</a>
+            <a href="Bab%2014/Laporan%20Praktikum_Pertemuan_12_PPW_Misbahul%20Huda_568209.pdf">Laporan</a>
+            <a href="Bab%2014/Modul%20Praktikum%20Pertemuan%2014.pdf">Modul</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">PPW1 Portofolio - Misbahul Huda - Universitas Gadjah Mada - 2026</div>
+  </footer>
+</body>
+</html>
