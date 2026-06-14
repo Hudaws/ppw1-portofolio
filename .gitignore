@@ -8,6 +8,10 @@
 node_modules/
 vendor/
 
+# File cache Python
+__pycache__/
+*.pyc
+
 # File sistem
 .DS_Store
 Thumbs.db
